@@ -1,0 +1,491 @@
+
+.main_header_top {
+  width: 100%;
+  height: 73px;
+  flex-shrink: 0;
+  background: #FFF;
+}
+
+.main_header_top .vlog_container {
+  height: 100%;
+}
+
+.main_header_top_inr {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vlog_marketplace_brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  align-content: center;
+}
+
+.vlog_marketplace {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 195px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid #623189;
+  background: rgba(98, 49, 137, 0.10);
+  margin-left: 49px;
+}
+
+.vlog_marketplace span {
+  color: #623189;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 100%;
+}
+
+.vlog_marketplace select {
+  background: none;
+  border: 0;
+  color: #623189;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.vlog_brand {
+  width: 45px;
+  height: 45.433px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.vlog_header_navbar {
+  width: auto;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  gap: 23px;
+}
+
+.vlog_header_lang {}
+
+.vlog_header_lang_inr {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  border-left: #D1D1D1 solid 1px;
+  padding-left: 23px;
+}
+
+.vlog_header_lang select {
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+  background: none;
+  border: 0 none;
+}
+
+.vlog_header_lang svg {
+  margin-right: 6px;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.vlog_header_info {
+  display: flex;
+  align-items: center;
+}
+
+.vlog_header_flag {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.vlog_header_flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vlog_header_placead {
+  display: flex;
+  align-items: center;
+}
+
+.vlog_header_placead a {
+  border-radius: 99px;
+  border: 1px solid #F28C1B;
+  display: inline-flex;
+  padding: 13px 36px;
+  align-items: flex-start;
+  gap: 10px;
+  color: #F28C1B;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.vlog_header_regbtn {
+  display: flex;
+  align-items: center;
+}
+
+.vlog_header_regbtn a {
+  border-radius: 99px;
+  background: #F28C1B;
+  display: inline-flex;
+  padding: 13px 36px;
+  align-items: flex-start;
+  gap: 10px;
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.vlog_header_contact {
+  display: flex;
+  align-items: center;
+}
+
+.vlog_header_contact.vlog_header_contact_home label {
+  margin-right: 0;
+}
+
+.vlog_header_contact label {
+  margin-right: 11px;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  background: #623189;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.vlog_header_contact span {
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+}
+
+/* Navbar Pakistan  */
+.vlog_pak_navbar_otr {
+  width: 100%;
+}
+
+.vlog_pak_navbar_inr {
+  background: #FFF;
+  height: 73px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.vlog_pak_navbar_inr ul {
+  display: flex;
+  height: 100%;
+}
+
+.vlog_pak_navbar_inr ul li {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  border-right: #CFCFCF solid 1px;
+  padding-right: 23px;
+  margin-right: 23px;
+}
+
+.vlog_pak_navbar_inr ul li:last-child {
+  border-right: 0 none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.vlog_pak_navbar_inr ul li a {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.vlog_pak_navbar_inr ul li a svg {
+  margin-left: 10px;
+}
+
+/* Navbar pakistan  */
+/* Navbar india  */
+.vlog_ind_navbar_otr {
+  width: 100%;
+  background: #FFF;
+  box-shadow: 0px 4px 12px 0px rgba(189, 189, 189, 0.25);
+  margin-bottom: 57px;
+}
+
+.vlog_ind_navbar_inr {
+  height: 151px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 18px;
+  padding-bottom: 24px;
+}
+
+.vlog_ind_navbar_inr ul {
+  display: flex;
+  height: 100%;
+  gap: 30px;
+  justify-content: flex-start;
+}
+
+.vlog_ind_navbar_inr ul li {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.vlog_ind_navbar_inr ul li a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.vlog_ind_navbar_inr ul li a img {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+.vlog_ind_navbar_inr ul li a span {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 10px;
+}
+
+.vlog_ind_navbar_inr ul li a svg {
+  margin-left: 10px;
+}
+
+/* Navbar india  */
+/* Navbar Pakistan  */
+.vlog_home_navbar_otr {
+  width: 100%;
+}
+
+.vlog_home_navbar_inr {
+  background: #FFF;
+  height: 73px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.vlog_home_navbar_inr ul {
+  display: flex;
+  height: 100%;
+  gap: 70px;
+}
+
+.vlog_home_navbar_inr ul li {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.vlog_home_navbar_inr ul li a {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+}
+
+.vlog_home_navbar_inr ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  border-radius: 99px;
+  background: #fff;
+  height: 5px;
+  flex-shrink: 0;
+}
+
+.vlog_home_navbar_inr ul li a.active {
+  color: #623189;
+}
+
+.vlog_home_navbar_inr ul li a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  border-radius: 99px;
+  background: #623189;
+  height: 5px;
+  flex-shrink: 0;
+}
+
+/* Navbar pakistan  */
+/* landing page banner  */
+
+
+/* footer  */
+.vlog_main_footer {
+  width: 100%;
+  background: #242424;
+}
+
+.vlog_footer_listing {
+  width: 100%;
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: #FFF solid 1px;
+}
+
+.vlog_footer_listing_col {
+  width: 20%;
+}
+
+.vlog_footer_listing_col h2 {
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px;
+  margin-bottom: 17px;
+}
+
+.vlog_footer_listing_col ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.vlog_footer_listing_col ul li {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+}
+
+.vlog_footer_listing_col ul.social_contact_list {
+  gap: 20px;
+}
+
+.vlog_footer_listing_col ul li a {
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.vlog_footer_copyright {
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.vlog_footer_copyright p {
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+/* footer */
+@media screen and (max-width:991px) {
+  .vlog_footer_listing {
+    flex-wrap: wrap;
+  }
+
+  .vlog_footer_listing_col {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .main_header_top_inr {
+    flex-wrap: wrap;
+  }
+
+  .vlog_header_navbar {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+  }
+
+  .main_header_top {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: auto;
+  }
+
+  .vlog_select_empire_box {
+    width: 100%;
+  }
+
+  .vlog_buy_selling_box {
+    width: 100%;
+  }
+
+}
