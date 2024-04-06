@@ -32,6 +32,12 @@ class FrontendController extends Controller
     }
 
 
+    public function productdetails()
+    {
+        return view ('productDetails');
+    }
+
+
     public function login()
     {
 

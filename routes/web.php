@@ -25,6 +25,7 @@ Route::get('cache-clear', function () {
 })->name('cache.clear');
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
+Route::get('/product-details', [FrontendController::class, 'productdetails'])->name('product-details');
 Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');
 Route::post('user/login', [FrontendController::class, 'loginSubmit'])->name('login.submit');
 Route::get('user/logout', [FrontendController::class, 'logout'])->name('user.logout');
