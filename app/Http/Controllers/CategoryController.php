@@ -44,16 +44,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
-        // $this->validate($request,[
-        //     'title'=>'string|required',
-        //     'summary'=>'string|nullable',
-        //     'photo'=>'required',
-        //     'status'=>'required|in:active,inactive',
-        //     'is_parent'=>'sometimes|in:1',
-        //     'parent_id'=>'nullable|exists:categories,id',
-        // ]);
-
 
         $request->validate([
 

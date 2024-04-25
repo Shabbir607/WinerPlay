@@ -51,11 +51,10 @@ class HomeController extends Controller
 
 
         if ($user->role_id == 1) {
-            // Admin login, redirect to admin dashboard
+
             return view('backend.index', ['data' => $data, 'array' => $array]);
         } else {
 
-            // User login, return the view for user.index
             return view('user.index', ['data' => $data, 'array' => $array])
                 ->with('product_lists',$products)
                 ->with('category_lists',$category);

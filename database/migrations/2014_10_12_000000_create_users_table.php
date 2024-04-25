@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger("role_id")->default(2);
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
+            $table->enum('supporter',['yes','no'])->default('no');
             $table->enum('status',['active','inactive'])->default('active');
             $table->rememberToken()->nullable();
             $table->timestamps();

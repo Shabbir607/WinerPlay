@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->text('summary');
             $table->longText('description')->nullable();
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->integer('stock')->default(1);
             $table->enum('status',['active','inactive'])->default('inactive');
             $table->decimal('price', 8, 2);

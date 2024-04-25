@@ -24,7 +24,7 @@
 <body>
 <div class="container">
     <!-- Section 1 -->
-    <section class="section-1" id="section-1">
+    <section class="section-1" >
         <!-- Logo -->
         <a href="#" class="logo">
             <i class="fab fa-apple"></i>
@@ -33,9 +33,9 @@
 
         <!-- Navbar -->
         <nav class="navbar">
-            <a href="#section-2" class="navbar-link">iPhone 12</a>
-            <a href="#section-3" class="navbar-link">MacBook Air</a>
-            <a href="#section-3" class="navbar-link">Watch</a>
+            @foreach($parentcategories as $parentcategory)
+            <a href="{{route('categoryproductlist', $parentcategory->slug)}}" class="navbar-link">{{$parentcategory->title}}</a>
+            @endforeach
             @auth
                 @if(Auth::user()->role_id == 1)
                     <a target="_blank" href="{{ route('dashboard') }}" class="navbar-link">dashboard</a>
@@ -125,6 +125,7 @@
         <h2 class="title">Featured Products</h2>
         <div class="row horizontal-scroll-wrapper squares">
             @foreach($product_lists as $product)
+                <a href="{{ route('product-details',$product->slug) }}">
             <div class="col-4 box-container">
                 <div class="image-overlay"></div>
                 <img src="{{ asset('images/'.$product->photo) }}" alt="tablet pc">
@@ -144,6 +145,7 @@
                 <!-- <div class="btn btn-secondary" title="Preview Item"><i class="fa fa-cart-plus" aria-hidden="true"></i>
                 </div> -->
             </div>
+                </a>
             @endforeach
         </div>
         <!-- Latest products -->

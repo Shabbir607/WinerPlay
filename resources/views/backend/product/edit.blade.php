@@ -5,7 +5,7 @@
     <div class="card">
         <h5 class="card-header">Edit Product</h5>
         <div class="card-body">
-            <form method="post" action="{{ route('products.update', ['id' => $product->id]) }}">
+            <form method="post" action="{{ route('products.update', ['id' => $product->id]) }}"enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="inputTitle" class="col-form-label">Title <span class="text-danger">*</span></label>

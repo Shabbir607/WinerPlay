@@ -5,6 +5,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +28,9 @@ Route::get('cache-clear', function () {
 })->name('cache.clear');
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
-Route::get('/product-details', [FrontendController::class, 'productdetails'])->name('product-details');
+//Route::get('/product-details', [FrontendController::class, 'productdetails'])->name('product-details');
+Route::get('/product-details/{slug}', [FrontendController::class, 'productdetails'])->name('product-details');
+Route::get('/category-product-list/{slug}', [FrontendController::class, 'CategoryproductList'])->name('categoryproductlist');
 Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');
 Route::post('user/login', [FrontendController::class, 'loginSubmit'])->name('login.submit');
 Route::get('user/logout', [FrontendController::class, 'logout'])->name('user.logout');
@@ -37,38 +42,59 @@ Route::post('user/register', [FrontendController::class, 'registerSubmit'])->nam
 
 Auth::routes();
 
-Route::get('/dashboard', function (){
-    return view('index');})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [FrontendController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+//profile Routes
+Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+Route::post('/profile/{id}', [UserController::class, 'profileUpdate'])->name('profile-update');
+Route::get('settings', [UserController::class, 'settings'])->name('settings');
+Route::post('setting/update', [UserController::class, 'settingsUpdate'])->name('settings.update');
 
 
 Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function () {
 // Product
-    Route::get('/product' ,[ProductController::class, 'index'])->name('/product');
+    Route::get('/product', [ProductController::class, 'index'])->name('/product');
     Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-    Route::get('/product.create' ,[ProductController::class, 'create'])->name('/product.create');
-    Route::post('/product.store' ,[ProductController::class, 'store'])->name('/product.store');
+    Route::get('/product.create', [ProductController::class, 'create'])->name('/product.create');
+    Route::post('/product.store', [ProductController::class, 'store'])->name('/product.store');
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::post('/products/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
 // category
-    Route::get('/category' ,[CategoryController::class, 'index'])->name('/category');
-    Route::get('/category.create' ,[CategoryController::class, 'create'])->name('/category.create');
-    Route::post('/category.store' ,[CategoryController::class, 'store'])->name('/category.store');
+    Route::get('/category', [CategoryController::class, 'index'])->name('/category');
+    Route::get('/category.create', [CategoryController::class, 'create'])->name('/category.create');
+    Route::post('/category.store', [CategoryController::class, 'store'])->name('/category.store');
     Route::get('/category_edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::post('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 //brand
-    Route::get('/brand' ,[BrandController::class, 'index'])->name('/brand');
-    Route::get('/brand.create' ,[BrandController::class, 'create'])->name('/brand.create');
-    Route::post('/brand.store' ,[BrandController::class, 'store'])->name('/brand.store');
+    Route::get('/brand', [BrandController::class, 'index'])->name('/brand');
+    Route::get('/brand.create', [BrandController::class, 'create'])->name('/brand.create');
+    Route::post('/brand.store', [BrandController::class, 'store'])->name('/brand.store');
     Route::get('/brand/{id}/edit', [BrandController::class, 'edit'])->name('brand.edit');
     Route::post('/brand/{id}', [BrandController::class, 'update'])->name('brand.update');
     Route::delete('/brand/{id}/destroy', [BrandController::class, 'destroy'])->name('brand.destroy');
 
-});
 
-Route::group(['prefix' => '/user', 'middleware' => ['user']],  function () {
+});
+// Index route
+Route::get('users', [UsersController::class,'index'])->name('users.index');
+
+// Create route
+Route::get('users/create' , [UsersController::class,'create'])->name('users.create');
+Route::post('users', [UsersController::class,'store'])->name('users.store');
+
+// Show route
+Route::get('users/{user}',  [UsersController::class,'show'])->name('users.show');
+
+// Edit route
+Route::get('users/{user}/edit',[UsersController::class,'edit'])->name('users.edit');
+Route::put('users/{user}', [UsersController::class,'update'])->name('users.update');
+
+// Delete route
+Route::delete('users/{user}', [UsersController::class,'destroy'])->name('users.destroy');
+
+Route::group(['prefix' => '/user', 'middleware' => ['user']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('user.home');
 
     // Profile
@@ -99,3 +125,8 @@ Route::group(['prefix' => '/user', 'middleware' => ['user']],  function () {
     Route::delete('/jobsave/{id}/destroy', [HomeController::class, 'destroy'])->name('jobsave.destroy');
 
 });
+
+//payment
+Route::get('handle-payment/{id}', [PaymentController::class, 'handlePayment'])->name('make.payment');
+Route::get('cancel-payment',  [PaymentController::class,'paymentCancel'])->name('cancel.payment');
+Route::get('payment-success',  [PaymentController::class,'paymentSuccess'])->name('success.payment');

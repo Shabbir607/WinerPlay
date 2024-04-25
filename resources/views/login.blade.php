@@ -47,6 +47,25 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
+                <!-- Supporter Field -->
+                <div class="form-group row">
+                    <label for="supporter" class="col-md-4 col-form-label text-md-right">{{ __('Are you a supporter?') }}</label>
+
+                    <div class="col-md-6">
+                        <select name="supporter" id="supporter" class="form-control">
+                            <option value="yes">Yes</option>
+                            <option value="no" selected>No</option>
+                        </select>
+
+                        @error('supporter')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End of Supporter Field -->
+
                 <input type="submit" class="btn solid">
 
                 @error('name')

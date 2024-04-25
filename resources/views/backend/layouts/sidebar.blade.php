@@ -13,7 +13,7 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('dashboard')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -70,6 +70,11 @@
             <a class="collapse-item" href="{{route('/brand.create')}}">Add Brand</a>
           </div>
         </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('users.index')}}">
+            <i class="fas fa-users"></i>
+            <span>Users</span></a>
     </li>
 
 </ul>

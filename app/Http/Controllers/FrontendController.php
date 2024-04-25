@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use app\Models\User;
+use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,28 +14,73 @@ use Illuminate\Support\Facades\Session;
 
 class FrontendController extends Controller
 {
+    public function index()
+    {
+        $sale = Subscription::countSubscription();
+        $userData = User::calculateTodayUsers();
+        $investmentData = Subscription::calculateTodayInvestment();
+        $memberData = User::calculateNewMember();
+        $totalInvestment = Subscription::getTotalInvestment();
+        $items = Product::countActiveProduct();
+//        $allUsers = User::getAllUsers();
+        $allUsers = User::count();
+        $Members = User::getMember();
+
+        return view('index', ['investmentData' => $investmentData, 'userData' => $userData, 'memberData' => $memberData, 'totalInvestment' => $totalInvestment, 'totalUsers' => $allUsers,'items'=>$items])->with('sale', $sale)->with('members', $Members);
+    }
 
     public function home()
     {
 
         $featured = Product::where('status', 'active')->where('is_featured', 1)->orderBy('price', 'DESC')->limit(2)->get();
         $products = Product::where('status', 'active')->orderBy('id', 'DESC')->limit(8)->get();
-        $subcategories = Category::where('status', 'active')->where('is_parent', 0)->get();
+        $parentcategories = Category::where('status', 'active')->where('is_parent', 1)->limit(3)->get();
+
         $categories = Category::where('status', 'active')->where('is_parent', 1)->orderBy('title', 'ASC')->get();
-        $parent_cats=Category::where('is_parent',1)->orderBy('title','ASC')->get();
+        $parent_cats = Category::where('is_parent', 1)->orderBy('title', 'ASC')->get();
 
-//        dd($products);
         return view('welcome')
-
             ->with('product_lists', $products)
             ->with('categories', $categories)
-            ->with('filteredProducts', $products);
+            ->with('filteredProducts', $products)
+            ->with('parentcategories', $parentcategories);
     }
 
-
-    public function productdetails()
+    public function productdetails(Request $request, $slug)
     {
-        return view ('productDetails');
+
+        $parentcategories = Category::where('status', 'active')->where('is_parent', 1)->limit(3)->get();
+
+        $product = Product::where('slug', $slug)->get();
+        $product_id = Product::where('slug', $slug)->pluck('id')->first();
+        $subscribe_product = Subscription::where('product_id', $product_id)->pluck('product_id')->first();
+        $subscribe_user = Subscription::where('product_id', $product_id)->pluck('user_id')->count();
+        return view('productDetails')->with('product', $product)->with('subscribe_product', $subscribe_product)->with('subscribe_user', $subscribe_user)->with('parentcategories', $parentcategories);
+    }
+
+    public function productList()
+    {
+
+        return view('productlist');
+
+    }
+
+    public function CategoryproductList(Request $request, $slug)
+    {
+
+        $categories = Category::where('status', 'active')->where('slug', $slug)->get();
+        $title = Category::where('status', 'active')->where('slug', $slug)->pluck('title')->implode(', ');
+        $parentcategories = Category::where('status', 'active')->where('is_parent', 1)->limit(3)->get();
+
+        $products = Product::where('status', 'active')->get();
+        return view('productlist')->with('title', $title)->with('parentcategories', $parentcategories);
+    }
+
+    public function watchList()
+    {
+        $title = "Watches";
+        return view('backend.pages.dashboard')->with('title', $title);
+
     }
 
 
@@ -77,38 +123,31 @@ class FrontendController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
+            'supporter' => 'required',
         ]);
 
-        // Create a new user
+
         $user = $this->create($validatedData);
 
-        // Check if the user creation was successful
         if ($user) {
-            // Flash a success message to the session
             $request->session()->flash('success', 'Successfully registered');
-            // Redirect the user to the home page
             return view('login');
         } else {
-            // Flash an error message to the session
             $request->session()->flash('error', 'Please try again!');
-            // Redirect the user back to the registration form
             return back();
         }
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
+
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'status' => 'active' // Assuming you have a 'status' field in your users table
+            'status' => 'active',
+            'supporter' => $data['supporter']
         ]);
     }
 

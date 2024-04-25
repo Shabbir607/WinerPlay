@@ -3,7 +3,7 @@
 @section('main-content')
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
-     
+
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary float-left">Product Lists</h6>
       <a href="{{route('/product.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Product</a>
@@ -20,10 +20,6 @@
               <th>Is Featured</th>
               <th>Price</th>
               <th>Discount</th>
-              <th>Size</th>
-              <th>Condition</th>
-              <th>Brand</th>
-              <th>Stock</th>
               <th>Photo</th>
               <th>Status</th>
               <th>Action</th>
@@ -37,10 +33,6 @@
               <th>Is Featured</th>
               <th>Price</th>
               <th>Discount</th>
-              <th>Size</th>
-              <th>Condition</th>
-              <th>Brand</th>
-              <th>Stock</th>
               <th>Photo</th>
               <th>Status</th>
               <th>Action</th>
@@ -51,7 +43,6 @@
             @foreach($products as $product)
               @php
               $sub_cat_info=DB::table('categories')->select('title')->where('id',$product->child_cat_id)->get();
-              // dd($sub_cat_info);
               $brands=DB::table('brands')->select('title')->where('id',$product->brand_id)->get();
               @endphp
                 <tr>
@@ -65,16 +56,7 @@
                     <td>{{(($product->is_featured==1)? 'Yes': 'No')}}</td>
                     <td>Rs. {{$product->price}} /-</td>
                     <td>  {{$product->discount}}% OFF</td>
-                    <td>{{$product->size}}</td>
-                    <td>{{$product->condition}}</td>
-                    <td> {{ucfirst($product->brand->title?? '')}}</td>
-                    <td>
-                      @if($product->stock>0)
-                      <span class="badge badge-primary">{{$product->stock}}</span>
-                      @else
-                      <span class="badge badge-danger">{{$product->stock}}</span>
-                      @endif
-                    </td>
+
                     <td>
                         @if($product->photo)
                             @php
@@ -88,6 +70,7 @@
                     </td>
                     <td>
                         @if($product->status=='active')
+
                             <span class="badge badge-success">{{$product->status}}</span>
                         @else
                             <span class="badge badge-warning">{{$product->status}}</span>
